@@ -77,8 +77,8 @@ public class Stat {
 		//OperationsImpl:getData min 123, max 846, avg 315, max id 22, count 333
 		
 		return new StringBuilder(className).append(":").append(methodName).append(" ")
-					.append("min ").append(minWorkTime).append(", max ").append(maxWorkTime)
-					.append(", avg ").append((allWorkTime/count)).append(", max id ").append(maxIdWorkTime)
+					.append("min ").append(minWorkTime/App.METRIC).append(", max ").append(maxWorkTime/App.METRIC)
+					.append(", avg ").append((allWorkTime/count)/App.METRIC).append(", max id ").append(maxIdWorkTime)
 					.append(", count ").append(count).toString(); 		
 	}
 }

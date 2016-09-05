@@ -20,16 +20,18 @@ public class App
 {
 	
 	//TODO перенести в конфиг 
-	private static final String PROGRAM_NAME="logParser";
-	public static final long METRIC = Calendar.MILLISECOND;
+	private static final String PROGRAM_NAME="parseLog";
+	//public static final long METRIC = Calendar.MILLISECOND;
+	public static final long METRIC = 1;
 	private static final String FILE_TYPE = "file";
+	private static final String FOOTER_HELP_LOG=" Statistic format \r\n OperationsImpl:acceptToken min 20121(millisecond), max 2512806(millisecond), avg 1259706(millisecond), max id 41938, count 11321"; 
 	
 	
 	private static IParseHandler parserLog =null;
 	
 	private static Map<String, Stat> res = new HashMap<>();
 	private static HelpFormatter formatter = new HelpFormatter();
-
+	
 	
     public static void main( String[] args )
     {
@@ -56,8 +58,9 @@ public class App
 				System.out.println(res.get(key));
 			}
 			
+			
 		} catch (ParseException|LogIllegalArgumentExecption e) {
-			formatter.printHelp(PROGRAM_NAME, options, true);
+			formatter.printHelp(PROGRAM_NAME, "",options,  FOOTER_HELP_LOG,  true);
 		}catch (Exception e) {
 			System.out.println(e.getMessage());
 		}
